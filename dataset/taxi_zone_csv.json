@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "taxi_zone_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "blobloblob",

@@ -83,13 +83,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "taxi_zone_csv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureMySqlTable1",
+						"referenceName": "taxi_zone",
 						"type": "DatasetReference"
 					}
 				]
