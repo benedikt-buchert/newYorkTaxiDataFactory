@@ -16,16 +16,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "ParquetSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"modifiedDatetimeStart": "2022-06-24T00:00:00.532Z",
-							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
@@ -83,7 +78,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "taxi_zone_csv",
+						"referenceName": "trips",
 						"type": "DatasetReference"
 					}
 				],
