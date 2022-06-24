@@ -9,7 +9,7 @@
 		"type": "AzureMySqlTable",
 		"schema": [],
 		"typeProperties": {
-			"tableName": "taxi"
+			"tableName": "taxi_zone"
 		}
 	}
 }
