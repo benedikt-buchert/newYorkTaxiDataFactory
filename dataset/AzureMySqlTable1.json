@@ -7,9 +7,6 @@
 		},
 		"annotations": [],
 		"type": "AzureMySqlTable",
-		"schema": [],
-		"typeProperties": {
-			"tableName": "tripdata"
-		}
+		"schema": []
 	}
 }
