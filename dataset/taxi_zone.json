@@ -7,7 +7,26 @@
 		},
 		"annotations": [],
 		"type": "AzureMySqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "id",
+				"type": "bigint",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "borough",
+				"type": "varchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "service_zone",
+				"type": "varchar",
+				"precision": 0,
+				"scale": 0
+			}
+		],
 		"typeProperties": {
 			"tableName": "taxi_zone"
 		}
