@@ -21,7 +21,7 @@
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"modifiedDatetimeStart": "2022-06-24T00:00:00.167Z",
-							"wildcardFileName": "*.parquet",
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						}
 					},
