@@ -1,5 +1,5 @@
 {
-	"name": "taxi_zone_copy1",
+	"name": "taxi_trip",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureMySql1",
