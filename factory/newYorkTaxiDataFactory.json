@@ -1,0 +1,9 @@
+{
+	"name": "newYorkTaxiDataFactory",
+	"location": "germanywestcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dd680bbb-6fa1-4978-bb87-e330b3783a1a",
+		"tenantId": "92ce435f-094f-4227-af00-890e7337eb35"
+	}
+}
