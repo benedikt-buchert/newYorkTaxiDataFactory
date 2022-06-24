@@ -1,0 +1,98 @@
+{
+	"name": "joindData",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "taxi_zone",
+						"type": "DatasetReference"
+					},
+					"name": "zones"
+				},
+				{
+					"dataset": {
+						"referenceName": "trips",
+						"type": "DatasetReference"
+					},
+					"name": "trips"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "taxi_zone_csv",
+						"type": "DatasetReference"
+					},
+					"name": "safeToCSV"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     conversion_rate_eur as string",
+				"}",
+				"source(output(",
+				"          id as long,",
+				"          borough as string,",
+				"          service_zone as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> zones",
+				"source(output(",
+				"          VendorID as long,",
+				"          tpep_pickup_datetime as timestamp,",
+				"          tpep_dropoff_datetime as timestamp,",
+				"          passenger_count as double,",
+				"          trip_distance as double,",
+				"          RatecodeID as double,",
+				"          store_and_fwd_flag as string,",
+				"          PULocationID as long,",
+				"          DOLocationID as long,",
+				"          payment_type as long,",
+				"          fare_amount as double,",
+				"          extra as double,",
+				"          mta_tax as double,",
+				"          tip_amount as double,",
+				"          tolls_amount as double,",
+				"          improvement_surcharge as double,",
+				"          total_amount as double,",
+				"          congestion_surcharge as double,",
+				"          airport_fee as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> trips",
+				"zones, trips join(id == PULocationID",
+				"     && id == DOLocationID,",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 derive(total_amount_EUR = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Column_1 as string,",
+				"          Column_2 as string,",
+				"          Column_3 as string,",
+				"          Column_4 as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1) ~> safeToCSV"
+			]
+		}
+	}
+}
